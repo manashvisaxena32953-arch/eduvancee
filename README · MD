@@ -1,0 +1,60 @@
+# EDUVANCE – Smart Student Management
+
+Student Enrollment Form micro project built with HTML5, CSS3, vanilla JavaScript, AJAX and JsonPowerDB (JPDB).
+
+- Database: `SCHOOL-DB`
+- Relation: `STUDENT-TABLE`
+- Primary key: `Roll-No`
+
+## Project structure
+
+```
+eduvance/
+├── index.html
+├── style.css
+├── script.js
+├── config.js          
+├── js/
+│   └── jpdb-commons.js  
+└── README.md
+```
+
+## Configure JPDB
+
+1. Get your connection token from your Login2Explore account.
+2. Open `config.js` and replace `YOUR_CONNECTION_TOKEN_HERE`.
+3. Put the course's `jpdb-commons.js` inside a `js` folder next to `index.html`.
+4. `SCHOOL-DB` and `STUDENT-TABLE` are created by the first PUT. No manual setup is needed.
+
+## Run in NetBeans
+
+1. File > New Project > HTML5/JavaScript > HTML5/JS Application.
+2. Copy the files above into the project's Site Root (`public_html`).
+3. Right-click `index.html` > Run File.
+
+## Test the workflows
+
+1. **Initial state:** only Roll Number is enabled and focused.
+2. **New roll number:** type `101` and press Tab. Other fields, Save and Reset enable; Update stays disabled; Full Name is focused.
+3. **Save:** fill every field and click Save Student. A success toast shows and the form resets.
+4. **Existing roll number:** type `101` again. The form fills, Roll Number locks, Update and Reset enable, Save disables.
+5. **Update:** change a field, click Update Student, confirm. The record updates and the form resets.
+6. **Reset:** clears everything and returns focus to Roll Number.
+7. **Validation:** try empty fields, a future birth date, or an enrollment date before birth date.
+
+## Statistics cards
+
+The cards read real records from JPDB. If the request fails, they show "–". The "fetch all records" call in `fetchAllStudents()` (script.js) is the one raw command; verify it against your course documentation.
+
+## Publish on GitHub
+
+```
+git init
+git add .
+git commit -m "EDUVANCE student enrollment"
+git branch -M main
+git remote add origin https://github.com/<your-username>/eduvance.git
+git push -u origin main
+```
+
+Before pushing, make sure `config.js` holds the placeholder token, not your real one.
